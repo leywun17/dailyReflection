@@ -1,0 +1,53 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ion-content {
+    --background: url('../../../assets/home.png') center center / cover !important;
+    padding: 0;
+}
+
+ion-header{
+    width: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.up{
+    height: 20vh;
+    background-color: #8572FF;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    border-radius: 0 0 0 180px;
+    padding: 20px;
+}
+
+.buttons{
+    height: auto;
+    padding: 10px;
+    display: flex;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.buttons ion-buttons{
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8572FF;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.buttons ion-buttons ion-button{
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

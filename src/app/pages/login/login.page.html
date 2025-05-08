@@ -1,0 +1,47 @@
+<!-- login.page.html -->
+<ion-content [fullscreen]="true" scroll-y="false" class="login-background">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+
+  <div class="login-container">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <div class="logo-box">
+        <ion-img src="../../../assets/logo.png" alt="Logo"></ion-img>
+        <h2 class="logo-text">Daily<br>reflection</h2>
+      </div>
+    </div>
+
+    <!-- Login Form Section -->
+    <div class="form-container">
+      <!-- Login/Register Toggle -->
+      <div class="login-toggle-container">
+        <div class="login-toggle">
+          <div class="login-active">Login</div>
+          <div class="login-inactive" (click)="goToRegister()">Register</div>
+        </div>
+      </div>
+
+      <!-- Form Fields -->
+      <ion-list lines="none" class="ion-no-padding">
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input type="text" [(ngModel)]="email" name="email" class="custom-input" placeholder=""></ion-input>
+        </ion-item>
+
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password" aria-label="Password input"
+            class="custom-input" placeholder="">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" (click)="login()" class="login-button">
+        Iniciar sesion
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

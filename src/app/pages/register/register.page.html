@@ -1,0 +1,89 @@
+<!-- register.page.html -->
+<ion-content [fullscreen]="true" scroll-y="false" class="login-background">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Indeterminate progress bar while loading -->
+  <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+
+  <div class="login-container">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <div class="logo-box">
+        <ion-img src="../../../assets/logo.png" alt="Logo"></ion-img>
+        <h2 class="logo-text">
+          Daily<br>reflection
+        </h2>
+      </div>
+    </div>
+
+    <!-- Register Form Section -->
+    <div class="form-container">
+      <!-- Login/Register Toggle -->
+      <div class="login-toggle-container">
+        <div class="login-toggle">
+          <div class="login-inactive" (click)="goToLogin()">Login</div>
+          <div class="login-active">Register</div>
+        </div>
+      </div>
+
+      <!-- Form Fields -->
+      <ion-list lines="none" class="ion-no-padding">
+        <!-- Full Name -->
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Full Name</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="fullName"
+            name="fullName"
+            class="custom-input"
+            placeholder="Your name">
+          </ion-input>
+        </ion-item>
+        
+        <!-- Username / Email -->
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            class="custom-input"
+            placeholder="you@example.com">
+          </ion-input>
+        </ion-item>
+
+        <!-- Password -->
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            class="custom-input"
+            placeholder="">
+          </ion-input>
+        </ion-item>
+
+        <!-- Confirm Password -->
+        <ion-item class="custom-item">
+          <ion-label position="stacked">Confirm Password</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            class="custom-input"
+            placeholder="">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <!-- Register Button -->
+      <ion-button expand="block" (click)="register()" class="login-button">
+        Crear cuenta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
