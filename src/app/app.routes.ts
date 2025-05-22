@@ -30,6 +30,6 @@ export const routes: Routes = [
   },
   {
     path: 'note/:id',
-    loadComponent: () => import('./note/note.component').then(m => m.NoteDetailComponent)
+    loadComponent: () => import('./pages/note/note.page').then(m => m.NotePage)
   }
 ];

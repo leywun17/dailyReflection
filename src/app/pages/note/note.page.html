@@ -1,13 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>note</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-no-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">note</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="isLoading" class="loading">
+    Cargando nota…
+  </div>
+
+  <div *ngIf="!isLoading && errorMsg" class="error">
+    {{ errorMsg }}
+  </div>
+
+
+  <div *ngIf="!isLoading && note">
+
+    <!-- FORMULARIO EDICIÓN -->
+    <form *ngIf="isEditing" (ngSubmit)="updateNote()">
+      <div class="custom-header">
+        <ion-item>
+          <ion-input [(ngModel)]="note.title" name="title" required></ion-input>
+        </ion-item>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Contenido</ion-label>
+        <ion-textarea  [autoGrow]="true" [(ngModel)]="note.content" name="content" required></ion-textarea>
+      </ion-item>
+      <ion-button shape="round" expand="full" type="submit">Guardar</ion-button>
+      
+    </form>
+
+    <!-- VISTA DE LECTURA -->
+    <div *ngIf="!isEditing" class="note-view">
+      <div class="custom-header">
+        <ion-button class="navegar" (click)="goToHome()" shape="round">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+        <h2>{{ note.title }}</h2>
+        <ion-button fill="clear" (click)="openMenu()" class="menu-btn">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="note-content">
+        <p>{{ note.content }}</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
 </ion-content>

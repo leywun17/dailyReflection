@@ -1,4 +1,3 @@
-// File: src/app/create-note/create-note.page.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +14,7 @@ import {
   LoadingController,
   ToastController,
   IonButtons,
-  IonBackButton
+  IonBackButton, IonIcon
 } from '@ionic/angular/standalone';
 import { NoteService, NoteResponse } from '../../services/note.service';
 import { UserProfile, LoginService } from '../../services/login.service';
@@ -27,20 +26,14 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './create-note.page.html',
   styleUrls: ['./create-note.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonIcon,
     CommonModule,
     FormsModule,
     IonContent,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonInput,
     IonItem,
-    IonLabel,
     IonTextarea,
     IonButton,
-    IonButtons,
-    IonBackButton
   ]
 })
 export class CreateNotePage {
@@ -67,6 +60,10 @@ export class CreateNotePage {
         this.router.navigateByUrl('/login');
       }
     });
+  }
+
+  goToHome() {
+    this.router.navigateByUrl('/home');
   }
 
   private async showToast(message: string, color: 'success' | 'warning' | 'danger') {
@@ -102,7 +99,9 @@ export class CreateNotePage {
 
       if (resp.status === 201) {
         await this.showToast('Nota creada exitosamente 🎉', 'success');
-        this.router.navigateByUrl('/home', { replaceUrl: true });
+        this.router.navigateByUrl('/home', { replaceUrl: true }).then(() => {
+          location.reload(); 
+        });
       } else {
         await this.showToast(resp.message || 'Error al crear nota', 'danger');
       }

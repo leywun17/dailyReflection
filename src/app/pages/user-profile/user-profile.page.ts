@@ -5,14 +5,14 @@ import { UserProfile, LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonLabel, IonButton, IonBackButton, IonIcon, IonInput, IonItem, IonButtons, IonAvatar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { createOutline, saveOutline, closeOutline, logOutOutline } from 'ionicons/icons';
+import { createOutline, saveOutline, closeOutline, logOutOutline, arrowBackOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
   styleUrls: ['./user-profile.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonButtons, IonBackButton, IonButton, IonLabel, IonContent, IonHeader, CommonModule, FormsModule, IonIcon, IonInput, IonItem]
+  imports: [IonAvatar, IonButton, IonLabel, IonContent, CommonModule, FormsModule, IonIcon, IonInput, IonItem]
 })
 export class UserProfilePage implements OnInit {
   userName = '';
@@ -28,11 +28,14 @@ export class UserProfilePage implements OnInit {
 
   constructor(private userService: LoginService, private router: Router) {
     // Register Ionic icons
-      addIcons({createOutline,saveOutline,closeOutline,logOutOutline});
+      addIcons({arrowBackOutline,createOutline,logOutOutline,saveOutline,closeOutline});
   }
 
   ngOnInit() {
     this.loadUserProfile();
+  }
+  goToHome(){
+    this.router.navigateByUrl('/home');
   }
 
   loadUserProfile() {

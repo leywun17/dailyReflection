@@ -1,0 +1,74 @@
+ion-content {
+    --background: #ffffff url('../../../assets/frames.png') center center / cover !important;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.navegar {
+    position: absolute;
+    --background: #ffffff;
+    z-index: 1000;
+    left: 10px;
+    top: 10px;
+    --color: #C0F1F4;
+}
+
+.note-header {
+    background: #C0F1F4;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    height: 120px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-header ion-item {
+    color: #020A20;
+}
+
+ion-input {
+    width: 100% !important;
+    text-align: center;
+    font-size: 1.1rem !important;
+    word-break: break-word;
+}
+
+.note-paper {
+    position: relative;
+    z-index: 2;
+}
+
+ion-item {
+    --background: transparent !important;
+    --highlight-color-focused: transparent !important;
+    --inner-border-width: 0;
+    margin-bottom: 10px;
+    --highlight-color: transparent;
+}
+
+ion-textarea {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    --padding-start: 0;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.contenido {
+    overflow-y: auto;
+}
+
+ion-button {
+    --background: #C0F1F4;
+    box-shadow: none;
+    color: #020A20;
+}
+
+.save-button {
+    margin: 0 auto;
+}

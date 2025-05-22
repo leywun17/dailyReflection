@@ -1,16 +1,24 @@
 ion-content {
-  --background: url('../../assets/home.png') center center / cover !important;
+  --background: #fff;
+  --padding-top: 0 !important;
+}
+
+.top-user{
+  background-color: #C0F1F4;
+  padding: 20px;
+  border-radius: 0 0  60px 60px;
+  color: #020A20;
 }
 
 ion-fab-button {
-  --background: #FFF0F0;
-  height: 50px;
-  width: 50px;
-  --color: #DE496E;
+  --background: #C0F1F4;
+  height: 60px;
+  width: 60px;
+  --color: #020A20;
 }
 
 ion-grid{
-  margin: 15px 0 18px 0;
+  margin: 0 0 18px 0;
 }
 
 .week-scroll {
@@ -18,6 +26,12 @@ ion-grid{
   overflow-x: auto;
   padding: 1rem 0;
   -webkit-overflow-scrolling: touch;
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+  height: 300px !important; 
 }
 
 .week-chip {
@@ -30,6 +44,7 @@ ion-grid{
   --padding-bottom: 0.25rem;
   height: 60px;
   transition: background 0.2s;
+  overflow: hidden;
 }
 
 ion-avatar{
@@ -38,8 +53,8 @@ ion-avatar{
 }
 
 .week-chip--active {
-  background: #FFF0F0 !important;
-  color: #DE496E;
+  background: #C0F1F4 !important;
+  color: #020A20;
 }
 
 .week-chip--inactive {
@@ -53,7 +68,94 @@ ion-avatar{
 }
 
 .chip-date {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
+}
+
+.emotion-scroll {
+  display: flex;
+  background: #C0F1F4;
+  border-radius: 15px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.emotion-scroll ion-chip {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+}
+
+.emotion-chip {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  border-radius: 0.8rem;
+  --padding-start: 0.5rem;
+  --padding-end: 0.5rem;
+  --padding-top: 0.25rem;
+  --padding-bottom: 0.25rem;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.emotion-chip--active {
+  background: #d3f8fa !important;
+  font-weight: bold;
+}
+
+.emotion-chip--inactive {
+  background: transparent;
+  color: #000;
+}
+
+.emotion-chip .emoji {
+  line-height: 1;
+  user-select: none;
+}
+
+.emocionometer ion-button{
+  --background: #C0F1F4 !important;
+  color: #020A20;
+}
+
+ion-card{
+  border-radius: 10px;
+  height: 110px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+ion-card-header{
+  background-color: #C0F1F4;
+  height: 40%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+ion-card-title{
+  color: #020A20 !important;
+  white-space: nowrap;        
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+  display: block;             
+  max-width: 100%;  
+  text-transform: capitalize;
+}
+
+
+
+
+ion-card-content{
+  height: 60%;
 }

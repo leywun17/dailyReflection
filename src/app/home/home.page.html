@@ -1,54 +1,78 @@
-<ion-content class="ion-padding home-bg">
-  <!-- Header with greeting and profile picture -->
-  <ion-grid>
+<ion-content>
+
+  <ion-grid class="top-user">
     <ion-row class="ion-align-items-center header-row">
       <ion-col size="9">
         <h1 class="welcome-text">Welcome, {{ userName }}</h1>
       </ion-col>
       <ion-col size="3" class="ion-text-end">
         <ion-avatar>
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" (click)="goToUser()"/>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            (click)="goToUser()" />
         </ion-avatar>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <!-- Date picker horizontal scroll -->
-  <div class="week-scroll">
-    <ion-chip
-      *ngFor="let day of daysOfWeek"
-      (click)="selectDay(day)"
-      [ngClass]="{ 'week-chip--active': day.isActive, 'week-chip--inactive': !day.isActive }"
-      class="week-chip">
-      <ion-label>
-        <div class="chip-weekday">{{ day.weekday }}</div>
-        <div class="chip-date">{{ day.date }}</div>
-      </ion-label>
-    </ion-chip>
-  </div>
-  
 
+  <div class="ion-padding">
+    <div class="week-scroll">
+      <ion-chip *ngFor="let day of daysOfWeek" (click)="selectDay(day)"
+        [ngClass]="{ 'week-chip--active': day.isActive, 'week-chip--inactive': !day.isActive }" class="week-chip">
+        <ion-label>
+          <div class="chip-weekday">{{ day.weekday }}</div>
+          <div class="chip-date">{{ day.date }}</div>
+        </ion-label>
+      </ion-chip>
+    </div>
 
-  <!-- Notes Section -->
-  <div class="notes-section">
-    <h2 class="section-title">Notes</h2>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" *ngFor="let note of notes">
-          <ion-card class="note-card"  (click)="openNote(note.id)">
-            <ion-card-content>
-              <h3>{{ note.title }}</h3>
-              <p>{{ note.content }}</p>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div class="emocionometer">
+      <h2 class="section-title">Emocionometro</h2>
+      <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+      </canvas>
+      <div class="emotion-scroll">
+        <ion-chip *ngFor="let e of emotions" (click)="selectEmotion(e.name)"
+          [ngClass]="{ 'emotion-chip--active': selectedEmotion === e.name, 'emotion-chip--inactive': selectedEmotion !== e.name }"
+          class="emotion-chip" tappable>
+          <span class="emoji">{{ e.emoji }}</span>
+        </ion-chip>
+      </div>
+
+      <ion-button expand="block" shape="round" (click)="saveEmotion()" [disabled]="!selectedEmotion || !canSaveEmotion"
+        class="ion-margin-top">
+        Guardar emoción de hoy
+      </ion-button>
+
+    </div>
+    <div class="notes-section">
+      <h2 class="section-title">Notas</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let note of notes">
+            <ion-card class="note-card" (click)="openNote(note.id)">
+              <ion-card-header>
+                <ion-card-title>
+                  {{ note.title.split(' ').slice(0, 2).join(' ') }}{{ note.title.split(' ').length > 3 ? '...' : '' }}
+                </ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <p>{{ note.content }}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-infinite-scroll threshold="100px" [disabled]="!hasMoreNotes" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más notas...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
   </div>
-  <!-- Floating Add Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="goToCreateNote()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>

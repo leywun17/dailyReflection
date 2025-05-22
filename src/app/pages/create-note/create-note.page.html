@@ -1,28 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Crear Nota</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
+<ion-content scroll-y="true">
   <form (ngSubmit)="saveNote()">
-
-    <ion-item>
-      <ion-label position="floating">Título</ion-label>
-      <ion-input [(ngModel)]="noteTitle" name="title" required></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Contenido</ion-label>
-      <ion-textarea [(ngModel)]="noteContent" name="content" required></ion-textarea>
-    </ion-item>
-
-    <ion-button expand="full" type="submit" class="ion-margin-top">
-      Guardar Nota
+    <ion-button class="navegar" (click)="goToHome()" shape="round">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
     </ion-button>
 
+    <div class="note-header">
+      <ion-item lines="none">
+        <ion-input [(ngModel)]="noteTitle" name="title" placeholder="Título" required></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="note-paper">
+      <div class="contenido">
+        <ion-item lines="none">
+          <ion-textarea
+            [(ngModel)]="noteContent"
+            name="content"
+            placeholder="Escribe aquí lo que piensas."
+            required
+            autoGrow="true"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+
+    </div>
+    <div class="save-button-container">
+      <ion-button shape="round" expand="full" type="submit" class="save-button">
+        Guardar nota
+      </ion-button>
+    </div>
   </form>
 </ion-content>

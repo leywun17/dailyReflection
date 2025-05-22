@@ -6,4 +6,10 @@ const config: CapacitorConfig = {
   webDir: 'www'
 };
 
+plugins: {
+  Keyboard: {
+    resize: 'none' // otras opciones: 'body', 'ionic', 'native'
+  }
+}
+
 export default config;
