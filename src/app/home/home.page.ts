@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
   allNotes: NoteSummary[] = [];
   notes: NoteSummary[] = [];
   page = 1;
-  limit = 3;
+  limit = 6;
   hasMoreNotes = true;
 
   // 😊 Emociones
@@ -192,7 +192,7 @@ export class HomePage implements OnInit {
 
     this.notes = [...this.notes, ...newNotes];
     event.target.complete();
-
+    console.log('Notas cargadas:', this.allNotes);
     if (end >= this.allNotes.length) {
       this.hasMoreNotes = false;
       event.target.disabled = true;
